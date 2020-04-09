@@ -18,9 +18,9 @@ import { AllPostsComponent } from './components/all-posts/all-posts.component';
 
 const routes: Routes = [
   {path: '', component: HelloComponent},
-  {path: 'users', component: AllUsersComponent, resolve: {UserResolverService}},
-  {path: 'posts', component: AllPostsComponent, resolve: {PostResolverService}},
-  {path: 'comments', component: AllCommentsComponent, resolve: {CommentResolverService}}
+  {path: 'users', component: AllUsersComponent, resolve: {allUsers: UserResolverService}},
+  {path: 'posts', component: AllPostsComponent, resolve: {allPosts: PostResolverService}},
+  {path: 'comments', component: AllCommentsComponent, resolve: {allComments: CommentResolverService}}
 
 ];
 

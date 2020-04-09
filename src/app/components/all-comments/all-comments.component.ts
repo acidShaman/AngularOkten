@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PostModel} from '../../models/PostModel';
 import {ActivatedRoute} from '@angular/router';
+import {CommentModel} from '../../models/CommentModel';
 
 @Component({
   selector: 'app-all-comments',
@@ -9,10 +10,10 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class AllCommentsComponent implements OnInit {
 
-  comments: PostModel[];
+  comments: CommentModel[];
 
   constructor(private activatedRoute: ActivatedRoute) {
-    this.comments = this.activatedRoute.snapshot.data.allPosts;
+    this.comments = this.activatedRoute.snapshot.data.allComments;
     console.log(this.comments);
   }
 
