@@ -5,15 +5,6 @@
     {{user.username}}
     {{user.website}}
   </h3>
-  <ul>
-    <li *ngFor="let post of user.posts">
-      {{post.body}}
-      <ul>
-        <li *ngFor="let comment of post.comments">
-          {{comment.body}}
-        </li>
-      </ul>
-    </li>
-  </ul>
 </div>
 <hr>
+<router-outlet></router-outlet>
