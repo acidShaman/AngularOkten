@@ -1,9 +1,8 @@
 import {CommentModel} from './CommentModel';
 
 export class PostModel {
-  userId: number;
   id: number;
+  userId: number;
   title: string;
   body: string;
-  comments: CommentModel[] = [];
 }

@@ -14,7 +14,7 @@ export class PostService {
     return this.http.get<PostModel[]>('https://jsonplaceholder.typicode.com/posts');
   }
 
-  getPost(id: number) {
-    return this.http.get<PostModel[]>(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  getPostsByUserId(id: number) {
+    return this.http.get<PostModel[]>(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
   }
 }

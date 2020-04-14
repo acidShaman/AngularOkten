@@ -1,5 +1,13 @@
 <router-outlet></router-outlet>
 <p>all-users works!</p>
+<div>
+  {{singleUser?.id}}
+  {{singleUser?.name}}
+  {{singleUser?.email}}
+  {{singleUser?.address.city}}
+  {{singleUser?.address.geo.lat}}
+  {{singleUser?.address.geo.lng}}
+</div>
 <hr>
-<app-user *ngFor="let user of users" [user]="user"></app-user>
+<app-user *ngFor="let user of users" [user]="user" (forwardUserData)="catchUserData($event)"></app-user>
 
