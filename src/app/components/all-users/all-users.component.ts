@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UserModel} from '../../models/UserModel';
+import {User} from '../../models/User';
 import {ActivatedRoute} from '@angular/router';
+import {UserService} from '../../services/user.service';
+import {PostService} from '../../services/post.service';
 
 @Component({
   selector: 'app-all-users',
@@ -9,21 +11,29 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class AllUsersComponent implements OnInit {
 
-  users: UserModel[];
+  users: User[];
+  singleUser: User;
 
-  singleUser: any;
-
-  constructor(private activatedRoute: ActivatedRoute) {
-    this.users = this.activatedRoute.snapshot.data.allUsers; // записываем в локальную инфу с снэпшота
-    console.log(this.users);
+  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private postService: PostService) {
+    // get from resolver to render in AllUsersComponent
+    try {
+      this.users = this.activatedRoute.snapshot.data.allUsers;
+    } catch (e) {
+      console.log(e);
+    }
+    this.activatedRoute.params
+      .subscribe(comment => {
+        console.log(comment);
+        if (!!comment.postId) {
+          console.log(comment.postId);
+          // this.postService.getPostById(comment.postId).subscribe(post => {
+          //   console.log(post);
+          // });
+        }
+      });
   }
 
   ngOnInit(): void {
-  }
-
-  catchUserData(user: any) {
-    console.log(user);
-    this.singleUser = user;
   }
 
 }

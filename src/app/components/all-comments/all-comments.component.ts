@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PostModel} from '../../models/PostModel';
-import {ActivatedRoute} from '@angular/router';
 import {CommentModel} from '../../models/CommentModel';
+import {ActivatedRoute} from '@angular/router';
+import {CommentService} from '../../services/comment.service';
 
 @Component({
   selector: 'app-all-comments',
@@ -10,11 +10,24 @@ import {CommentModel} from '../../models/CommentModel';
 })
 export class AllCommentsComponent implements OnInit {
 
-  comments: CommentModel[];
+  commentList: CommentModel[];
 
-  constructor(private activatedRoute: ActivatedRoute) {
-    this.comments = this.activatedRoute.snapshot.data.allComments;
-    console.log(this.comments);
+  constructor(private activatedRoute: ActivatedRoute, private commentService: CommentService) {
+    // get from resolver to render in AllCommentsComponent
+    try {
+      this.commentList = this.activatedRoute.snapshot.data.allComments;
+    } catch (e) {
+      console.log(e);
+    }
+    // get comments for one exact post
+    this.activatedRoute.params
+      .subscribe(value => {
+        if (!!value.id) {
+          this.commentService.getAllCommentsByPostId(value.id).subscribe(comments => {
+            this.commentList = comments;
+          });
+        }
+      });
   }
 
   ngOnInit(): void {

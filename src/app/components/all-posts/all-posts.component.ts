@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PostModel} from '../../models/PostModel';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Post} from '../../models/Post';
+import {ActivatedRoute} from '@angular/router';
 import {PostService} from '../../services/post.service';
 
 @Component({
@@ -9,18 +9,25 @@ import {PostService} from '../../services/post.service';
   styleUrls: ['./all-posts.component.css']
 })
 export class AllPostsComponent implements OnInit {
-  posts: PostModel[];
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private postsService: PostService,
-              private router: Router
-  ) {
-    this.activatedRoute
-      .params
-      .subscribe(params =>
-      this.postsService
-        .getPostsByUserId(params.id)
-        .subscribe(postsFromServer => this.posts = postsFromServer));
+  posts: Post[];
+
+  constructor(private activatedRoute: ActivatedRoute, private postService: PostService) {
+    // get from resolver to render in AllPostsComponent
+    try {
+      this.posts = this.activatedRoute.snapshot.data.allPosts;
+    } catch (e) {
+      console.log(e);
+    }
+    // get posts for one exact user
+    this.activatedRoute.params
+    .subscribe(value => {
+    if (!!value.id) {
+    this.postService.getPostsByUserId(value.id).subscribe(posts => {
+      this.posts = posts;
+        });
+      }
+    });
   }
 
   ngOnInit(): void {

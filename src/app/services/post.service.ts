@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {PostModel} from '../models/PostModel';
+import {Post} from '../models/Post';
+
+const API = 'https://jsonplaceholder.typicode.com/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
+  constructor(private httpClient: HttpClient) { }
 
-  constructor(private http: HttpClient) {
-  }
-  getPosts(): Observable<PostModel[]> {
-    return this.http.get<PostModel[]>('https://jsonplaceholder.typicode.com/posts');
+  getAllPosts() {
+    return this.httpClient.get<Post[]>(API + 'posts');
   }
 
-  getPostsByUserId(id: number) {
-    return this.http.get<PostModel[]>(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
+  getPostsByUserId(id) {
+    return this.httpClient.get<Post[]>(API + `posts?userId=${id}`);
+  }
+
+  getPostById(id) {
+    return this.httpClient.get<Post>(API + `posts/${id}`);
   }
 }
