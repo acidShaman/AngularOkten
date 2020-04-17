@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {CommentModel} from '../models/CommentModel';
+import {CommentModel} from '../../../models/CommentModel';
 
 const API = 'https://jsonplaceholder.typicode.com/';
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {CommentService} from '../comment.service';
+import {CommentService} from './comment.service';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
-import {CommentModel} from '../../models/CommentModel';
+import {CommentModel} from '../../../models/CommentModel';
 import {Observable} from 'rxjs';
 
 @Injectable({

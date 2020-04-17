@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../models/User';
+import {User} from '../../../models/User';
 import {ActivatedRoute} from '@angular/router';
-import {UserService} from '../../services/user.service';
-import {PostService} from '../../services/post.service';
+import {UserService} from '../user/user.service';
+import {PostService} from '../../post/services/post.service';
 
 @Component({
   selector: 'app-all-users',
