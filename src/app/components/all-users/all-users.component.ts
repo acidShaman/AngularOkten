@@ -12,7 +12,7 @@ import {PostService} from '../../services/post.service';
 export class AllUsersComponent implements OnInit {
 
   users: User[];
-  singleUser: User;
+  singleUser: User = null;
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private postService: PostService) {
     // get from resolver to render in AllUsersComponent
@@ -22,13 +22,15 @@ export class AllUsersComponent implements OnInit {
       console.log(e);
     }
     this.activatedRoute.params
-      .subscribe(comment => {
-        console.log(comment);
-        if (!!comment.postId) {
-          console.log(comment.postId);
-          // this.postService.getPostById(comment.postId).subscribe(post => {
-          //   console.log(post);
-          // });
+      .subscribe(postId => {
+        console.log(postId.id);
+        if (!!postId.id) {
+          this.postService.getPostById(postId.id).subscribe(post => {
+            this.userService.getAllUsers().subscribe( value => {
+              this.singleUser = value.find(value1 => value1.id === post.userId);
+              console.log(value.find(value1 => value1.id === post.userId));
+            });
+          });
         }
       });
   }
