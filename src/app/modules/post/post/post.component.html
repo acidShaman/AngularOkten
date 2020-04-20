@@ -1,1 +1,9 @@
-<p>post works!</p>
+<div>
+  <h4>ID:{{post.id}} // UserID:{{post.userId}}</h4>
+  <h3>{{post.title}}</h3>
+  <code>
+    {{post.body}}
+  </code>
+  <button (click)="navigate(post)"> Show Comments</button>
+</div>
+<hr>

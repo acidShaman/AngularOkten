@@ -19,9 +19,9 @@ export class AllUsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  catchUserData(user: any) {
-    console.log(this.singleUser);
-    this.singleUser = user;
-  }
+  // catchUserData(user: any) {
+  //   console.log(this.singleUser);
+  //   this.singleUser = user;
+  // }
 
 }

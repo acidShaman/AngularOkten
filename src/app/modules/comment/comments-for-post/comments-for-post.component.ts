@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CommentModel} from '../../../models/CommentModel';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-comments-for-post',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsForPostComponent implements OnInit {
 
-  constructor() { }
+  commentsForPost: CommentModel[];
+
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.data.subscribe(value => {
+      this.commentsForPost = value.commentsForPost;
+    });
+  }
 
   ngOnInit(): void {
   }

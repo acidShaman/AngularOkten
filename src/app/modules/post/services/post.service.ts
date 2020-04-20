@@ -14,7 +14,7 @@ export class PostService {
     return this.httpClient.get<PostModel[]>('https://jsonplaceholder.typicode.com/posts');
   }
 
-  getPostByUserId(id): Observable<PostModel[]> {
+  getPostsByUserId(id): Observable<PostModel[]> {
     return this.httpClient.get<PostModel[]>(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
   }
 

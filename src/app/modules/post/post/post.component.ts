@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {PostModel} from '../../../models/PostModel';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  post: PostModel;
+
+  @Output()
+  forwardPostData = new EventEmitter();
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+  }
+
+  navigate(post: PostModel) {
+    this.forwardPostData.emit(post);
+    this.router.navigate([post.id, 'comments'],
+      {
+        state: {post},
+        queryParams: {idOfPost: post.id},
+        relativeTo: this.activatedRoute
+      });
   }
 
 }

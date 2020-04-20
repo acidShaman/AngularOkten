@@ -15,7 +15,7 @@ export class PostResolverService implements Resolve<PostModel[]>{
     const id = route.queryParamMap.get('idOfUser');
     console.log(id);
     if (id) {
-      return this.postService.getPostByUserId(id);
+      return this.postService.getPostsByUserId(id);
     } else {
       return this.postService.getPosts();
     }
