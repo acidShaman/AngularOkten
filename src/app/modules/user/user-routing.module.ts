@@ -10,8 +10,8 @@ import {CommonModule} from '@angular/common';
 const routes: Routes = [
   // localhost:4200/users
   {path: '', component: AllUsersComponent, resolve: {allUsers: UserResolveService}, children: [
-    // localhost:4200/users/:id
-      {path: ':id', loadChildren: () => import('../post/post.module').then(m => m.PostModule)}
+    // localhost:4200/users/:id/posts
+      {path: ':id/posts', loadChildren: () => import('../post/post.module').then(m => m.PostModule)}
     ]}
 ];
 
