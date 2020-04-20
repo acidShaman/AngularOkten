@@ -1,0 +1,11 @@
+<a>all users works!</a>
+<router-outlet></router-outlet>
+<hr>
+
+<div>
+  {{singleUser?.id}}
+  {{singleUser?.name}}
+  {{singleUser?.email}}
+  {{singleUser?.address.city}}
+</div>
+<app-user *ngFor="let user of users" [user]="user"></app-user>
