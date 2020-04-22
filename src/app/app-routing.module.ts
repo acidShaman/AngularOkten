@@ -7,11 +7,11 @@ const routes: Routes = [
   // localhost:4200/
   {path: '', component: GreetingComponent},
   // localhost:4200/users
-  {path: 'users', loadChildren: () => import('../app/modules/user/user.module').then(m => m.UserModule)},
+  {path: 'all-users', loadChildren: () => import('../app/modules/user/user.module').then(m => m.UserModule)},
   // localhost:4200/posts
-  {path: 'posts', loadChildren: () => import('../app/modules/post/post.module').then(m => m.PostModule)},
+  {path: 'all-posts', loadChildren: () => import('../app/modules/post/post.module').then(m => m.PostModule)},
   // localhost:4200/comments
-  {path: 'comments', loadChildren: () => import('../app/modules/comment/comment.module').then(m => m.CommentModule)}
+  {path: 'all-comments', loadChildren: () => import('../app/modules/comment/comment.module').then(m => m.CommentModule)}
 ];
 
 

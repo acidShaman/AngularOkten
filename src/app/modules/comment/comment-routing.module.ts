@@ -6,9 +6,9 @@ import {AllCommentsComponent} from './components/all-comments/all-comments.compo
 
 
 const routes: Routes = [
-  // localhost:4200/posts/:postId/comments
+  // localhost:4200/all-posts/:postId/comments
   {path: '', component: CommentsForPostComponent, resolve: {commentsOfPost: CommentResolverService}},
-  // localhost:4200/comments
+  // localhost:4200/all-comments
   {path: '', component: AllCommentsComponent, resolve: {allComments: CommentResolverService}, children: [
       {path: ':id/author', loadChildren: () => import('../user/user.module').then(m => m.UserModule)}
     ]}

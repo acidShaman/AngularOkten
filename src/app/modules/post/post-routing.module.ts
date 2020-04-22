@@ -8,7 +8,7 @@ import {AllPostsComponent} from './components/all-posts/all-posts.component';
 const routes: Routes = [
   // localhost:4200/users/:id/posts
   {path: '', component: PostsOfUserComponent, resolve: {postsOfUser: PostResolverService}},
-  // localhost:4200/posts/all-posts
+  // localhost:4200/all-posts
   {path: '', component: AllPostsComponent, resolve: {AllPosts: PostResolverService}, children: [
       {path: ':id/comments', loadChildren: () => import('../comment/comment.module').then(m => m.CommentModule)}
     ]}];
