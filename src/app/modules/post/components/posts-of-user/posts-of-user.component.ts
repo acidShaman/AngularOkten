@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PostModel} from '../../../models/PostModel';
+import {PostModel} from '../../../../models/PostModel';
 import {ActivatedRoute} from '@angular/router';
-import {PostService} from '../services/post.service';
 
 @Component({
   selector: 'app-posts-of-user',
@@ -15,6 +14,7 @@ export class PostsOfUserComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.data.subscribe(value => {
       this.postsOfUser = value.postsOfUser;
+      console.log(this.postsOfUser);
     });
   }
 

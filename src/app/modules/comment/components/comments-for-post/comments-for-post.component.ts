@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CommentModel} from '../../../models/CommentModel';
+import {CommentModel} from '../../../../models/CommentModel';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -9,11 +9,11 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class CommentsForPostComponent implements OnInit {
 
-  commentsForPost: CommentModel[];
+  commentsOfPost: CommentModel[];
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.data.subscribe(value => {
-      this.commentsForPost = value.commentsForPost;
+      this.commentsOfPost = value.commentsOfPost;
     });
   }
 

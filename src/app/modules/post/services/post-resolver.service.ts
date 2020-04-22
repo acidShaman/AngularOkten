@@ -13,7 +13,7 @@ export class PostResolverService implements Resolve<PostModel[]>{
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<PostModel[]> | Promise<PostModel[]> | PostModel[] {
     const id = route.queryParamMap.get('idOfUser');
-    console.log(id);
+    console.log(id, '!!!');
     if (id) {
       return this.postService.getPostsByUserId(id);
     } else {

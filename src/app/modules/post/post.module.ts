@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostRoutingModule } from './post-routing.module';
-import { PostComponent } from './post/post.component';
-import { AllPostsComponent } from './all-posts/all-posts.component';
-import { PostsOfUserComponent } from './posts-of-user/posts-of-user.component';
+import { PostComponent } from './components/post/post.component';
+import { AllPostsComponent } from './components/all-posts/all-posts.component';
+import { PostsOfUserComponent } from './components/posts-of-user/posts-of-user.component';
 
 
 @NgModule({
   declarations: [PostComponent, AllPostsComponent, PostsOfUserComponent],
+  exports: [
+    PostComponent
+  ],
   imports: [
     CommonModule,
     PostRoutingModule,
