@@ -1,0 +1,14 @@
+<form [formGroup]="toDoForm">
+  <div><input formControlName="id"></div>
+  <div *ngIf="toDoForm.controls.id.invalid">id is required</div>
+  <div><input formControlName="title"></div>
+  <div *ngIf="toDoForm.controls.title.invalid">id is required</div>
+  <div><input formControlName="type"></div>
+  <div></div>
+  <div><input formControlName="body"></div>
+  <div *ngIf="toDoForm.controls.body.invalid">id is required</div>
+  <button (click)="pushItems(toDoForm)"> Add Task</button>
+</form>
+<div>
+  <app-task *ngFor="let task of taskList" [task]="task"></app-task>
+</div>
