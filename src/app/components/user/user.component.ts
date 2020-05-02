@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserModel} from '../../models/UserModel';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -9,9 +10,11 @@ import {UserModel} from '../../models/UserModel';
 export class UserComponent implements OnInit {
 
   @Input()
-  user: UserModel;
+  user?: UserModel;
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.user = this.activatedRoute.snapshot.data.user;
+  }
 
   ngOnInit(): void {
   }

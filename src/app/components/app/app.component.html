@@ -1,8 +1,3 @@
 <h1>App Works</h1>
-<form [formGroup]="userForm">
-  <div>
-    <input formControlName="id">
-    <div *ngIf="userForm.controls.id.invalid && (userForm.controls.id.touched || userForm.controls.id.dirty)"> ID IS INVALID, PLEASE TRY ANOTHER VALUE</div>
-  </div>
-  <button (click)="navigate(this.userForm.value)">xXx_Push_xXx</button>
-</form>
+
+<router-outlet></router-outlet>
